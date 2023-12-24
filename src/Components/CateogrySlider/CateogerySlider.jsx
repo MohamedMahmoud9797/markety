@@ -1,13 +1,13 @@
 import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import Slider from "react-slick";
-import { getCaogries } from "./../../Services/getCategories";
 import { useDispatch, useSelector } from "react-redux";
+import { getCateogries } from "./../../Services/API/apiCalling";
 
-export default function SmallSlider() {
+export default function CateogerySlider() {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getCaogries());
+    dispatch(getCateogries());
   }, [dispatch]);
 
   const { categories } = useSelector((state) => state.categories);
@@ -21,13 +21,12 @@ export default function SmallSlider() {
     speed: 500,
     autoplay: true,
   };
-  console.log(categories);
 
   return (
     <Container>
       <Slider {...settings} className="my-3">
         {categories?.map((item) => (
-          <div key={item.id}>
+          <div key={item._id}>
             <img
               className="w-100"
               src={item.image}

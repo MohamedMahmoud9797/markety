@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getCaogries } from "./../../Services/getCategories";
+import { getCateogries } from "./../../Services/API/apiCalling";
 
 const initialState = {
   categories: [],
 };
 
-const categories = createSlice({
+const categoriesSlice = createSlice({
   name: "catogries",
   initialState,
-  reducers: {
-    // Define your reducer actions here
-  },
+  reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getCaogries.fulfilled, (state, action) => {
+    builder.addCase(getCateogries.fulfilled, (state, action) => {
       state.categories = action.payload;
     });
   },
 });
 
-export const { actions, reducer } = categories;
+export const { reducer: categoriesReducer } = categoriesSlice;

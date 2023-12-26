@@ -1,6 +1,7 @@
 import { Navbar, Badge, Nav, Container } from "react-bootstrap";
 import logo from "../../assets/images/creative-market-logo.png";
 import { BsFillCartPlusFill } from "react-icons/bs";
+import { NavLink } from "react-router-dom";
 
 const Navbarr = () => {
   return (
@@ -12,19 +13,27 @@ const Navbarr = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Products</Nav.Link>
-            <Nav.Link href="#link">Catogries</Nav.Link>
-            <Nav.Link href="#link">Brands</Nav.Link>
+            <NavLink className="mx-2" to="/">
+              Home
+            </NavLink>
+            <NavLink className="mx-2" to="Products">
+              Products
+            </NavLink>
+            <NavLink className="mx-2" to="Catogries">
+              Catogries
+            </NavLink>
+            <NavLink className="mx-2" to="Brands">
+              Brands
+            </NavLink>
           </Nav>
           <Nav className="ms-auto align-items-center">
-            <Nav.Link href="#home"></Nav.Link>
+            <Nav.Link to="#home"></Nav.Link>
             <Nav.Link variant="primary ml-5">
               cart <BsFillCartPlusFill size={37} />
               <Badge bg="success">9</Badge>
             </Nav.Link>
-            <Nav.Link href="#link">Login</Nav.Link>
-            <Nav.Link href="#link">Logout</Nav.Link>
+            <Nav.Link to="#link">Login</Nav.Link>
+            <Nav.Link to="#link">Logout</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

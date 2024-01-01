@@ -1,28 +1,28 @@
 import { Navbar, Badge, Nav, Container } from "react-bootstrap";
 import logo from "../../assets/images/creative-market-logo.png";
 import { BsFillCartPlusFill } from "react-icons/bs";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const Navbarr = () => {
   return (
     <Navbar expand="lg" className="bg-main-light">
       <Container>
-        <Navbar.Brand href="#home">
+        <NavLink className="nav-link" to="/">
           <img src={logo} />
-        </Navbar.Brand>
+        </NavLink>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav>
-            <NavLink className="mx-2" to="/">
+            <NavLink className="nav-link" to="/">
               Home
             </NavLink>
-            <NavLink className="mx-2" to="Products">
+            <NavLink className="nav-link" to="Products">
               Products
             </NavLink>
-            <NavLink className="mx-2" to="Catogries">
+            <NavLink className="nav-link" to="Catogries">
               Catogries
             </NavLink>
-            <NavLink className="mx-2" to="Brands">
+            <NavLink className="nav-link" to="Brands">
               Brands
             </NavLink>
           </Nav>
@@ -32,8 +32,13 @@ const Navbarr = () => {
               cart <BsFillCartPlusFill size={37} />
               <Badge bg="success">9</Badge>
             </Nav.Link>
-            <Nav.Link to="#link">Login</Nav.Link>
-            <Nav.Link to="#link">Logout</Nav.Link>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+            <Link to="/register" className="nav-link">
+              Register
+            </Link>
+            {/* <Nav.Link to="#link">Logout</Nav.Link> */}
           </Nav>
         </Navbar.Collapse>
       </Container>

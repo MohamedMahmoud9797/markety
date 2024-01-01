@@ -15,3 +15,21 @@ export const getAllProducts = createAsyncThunk(
     return fetchData(`${baseUrl}/api/v1/products`, thunkAPI);
   }
 );
+
+export const registerUser = createAsyncThunk(
+  "auth/registerUser",
+  async (values, thunkAPI) => {
+    try {
+      const res = await fetch(`${baseUrl}/api/v1/auth/signup`, {
+        method: "POST",
+
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);

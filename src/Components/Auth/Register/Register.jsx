@@ -3,11 +3,14 @@ import * as Yup from "yup";
 import { registerUser } from "../../../Services/API/apiCalling";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setloading } from "../../../Redux/Loading/loading.js";
+import Loading from "./../../Loading/Loading";
 
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data } = useSelector((state) => state.registerUser);
+  const { loading } = useSelector((state) => state.loading);
   const validationSchema = Yup.object({
     name: Yup.string()
       .required("Name is required")
@@ -34,12 +37,19 @@ export default function Register() {
     validationSchema,
     onSubmit: (values) => {
       dispatch(registerUser(values));
-      navigate("/login");
-      console.log(data);
+      if (data.message === "success") {
+        dispatch(setloading(true));
+        navigate("/login");
+      } else {
+        dispatch(setloading(false));
+        alert(data.message);
+      }
     },
   });
   return (
     <div className="w-50 m-auto my-5">
+      {loading ? <Loading /> : ""}
+
       <h1 className="my-5">Register Form</h1>
       <form onSubmit={formik.handleSubmit}>
         <label htmlFor="name" className="form-label">

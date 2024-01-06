@@ -2,10 +2,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getAllProducts } from "../../Services/API/apiCalling";
 import { useEffect } from "react";
+import Loading from "./../Loading/Loading";
 
 export default function Product() {
   let { id } = useParams();
   const { products } = useSelector((state) => state.products);
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getAllProducts());
@@ -13,7 +15,7 @@ export default function Product() {
 
   const product = products.find((el) => el._id === id);
   if (!product || !product.imageCover) {
-    return <div>Loading...</div>; //  handle the loading state !!!!
+    return <Loading />;
   }
   return (
     <div className="container my-3">

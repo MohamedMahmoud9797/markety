@@ -22,7 +22,6 @@ export const registerUser = createAsyncThunk(
     try {
       const res = await fetch(`${baseUrl}/api/v1/auth/signup`, {
         method: "POST",
-
         body: JSON.stringify(values),
       });
       const data = await res.json();

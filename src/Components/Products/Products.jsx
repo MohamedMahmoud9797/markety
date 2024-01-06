@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllProducts } from "../../Services/API/apiCalling";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import Loading from "./../Loading/Loading";
 export default function Products() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -13,6 +13,8 @@ export default function Products() {
   return (
     <div className="container">
       <div className="row">
+        {products.length === 0 ? <Loading /> : ""}
+
         {products?.map((item) => (
           <>
             <div className="col-md-2">

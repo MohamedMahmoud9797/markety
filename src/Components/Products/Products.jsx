@@ -3,6 +3,7 @@ import { getAllProducts } from "../../Services/API/apiCalling";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Loading from "./../Loading/Loading";
+import { addToCart } from "../../Redux/cart/cart";
 export default function Products() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -31,7 +32,10 @@ export default function Products() {
                   <div>
                     <h5 className="text-main">{item.price} $</h5>
                   </div>
-                  <button className="btn bg-main text-white w-100 my-3">
+                  <button
+                    className="btn bg-main text-white w-100 my-3"
+                    onClick={() => dispatch(addToCart(item))}
+                  >
                     Add To Cart
                   </button>
                 </div>

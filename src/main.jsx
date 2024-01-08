@@ -10,6 +10,7 @@ import ProductsPage from "./Routes/pages/ProductsPage.jsx";
 import ProductDetails from "./Routes/pages/ProductDetails.jsx";
 import Register from "./Components/Auth/Register/Register.jsx";
 import Login from "./Components/Auth/Login/Login";
+import Cartitems from "./Components/cartItems/Cartitems.jsx";
 const routes = createBrowserRouter([
   {
     path: "",
@@ -34,6 +35,14 @@ const routes = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/cart",
+        element: <Cartitems />,
+      },
+      {
+        path: "*",
+        element: <div>Not Found</div>,
       },
     ],
   },

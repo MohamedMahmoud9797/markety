@@ -32,3 +32,19 @@ export const registerUser = createAsyncThunk(
     }
   }
 );
+export const loginUser = createAsyncThunk(
+  "auth/loginUser",
+  async (values, thunkAPI) => {
+    try {
+      const res = await fetch(`${baseUrl}/api/v1/auth/signin`, {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      console.log(data);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);

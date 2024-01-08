@@ -2,8 +2,11 @@ import { Navbar, Badge, Nav, Container } from "react-bootstrap";
 import logo from "../../assets/images/creative-market-logo.png";
 import { BsFillCartPlusFill } from "react-icons/bs";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbarr = () => {
+  const cart = useSelector((state) => state.cart);
+  console.log(cart.cartItems.length);
   return (
     <Navbar expand="lg" className="bg-main-light">
       <Container>
@@ -28,10 +31,15 @@ const Navbarr = () => {
           </Nav>
           <Nav className="ms-auto align-items-center">
             <Nav.Link to="#home"></Nav.Link>
-            <Nav.Link variant="primary ml-5">
+            <Link
+              variant="primary ml-5"
+              to="cart
+            "
+              className="nav-link"
+            >
               cart <BsFillCartPlusFill size={37} />
-              <Badge bg="success">9</Badge>
-            </Nav.Link>
+              <Badge bg="success">{cart.cartItems.length}</Badge>
+            </Link>
             <Link to="/login" className="nav-link">
               Login
             </Link>

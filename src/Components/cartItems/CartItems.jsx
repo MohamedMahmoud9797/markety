@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { removeFromCart } from "../../Redux/cart/cart";
+import { clear, removeFromCart } from "../../Redux/cart/cart";
 
 export default function Cartitems() {
   const dispatch = useDispatch();
@@ -39,9 +39,17 @@ export default function Cartitems() {
             </div>
           </>
         ))}
-        <div className="text-center bg-main text-white">
+        <div className="text-center bg-main w-25 m-auto text-white">
           checkout : {totalPrice} USD
         </div>
+        <button
+          className="btn bg-danger text-white w-100 my-3  w-25 m-auto"
+          onClick={() => {
+            dispatch(clear());
+          }}
+        >
+          Remove all products
+        </button>
       </div>
     </>
   );
